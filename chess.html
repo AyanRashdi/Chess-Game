@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Chess Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #board {
+      display: grid;
+      grid-template-columns: repeat(8, 50px);
+      grid-template-rows: repeat(8, 50px);
+    }
+
+    .square {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #ccc;
+    }
+
+    .white {
+      background-color: #fff;
+    }
+
+    .black {
+      background-color: #000;
+    }
+  </style>
+</head>
+<body>
+  <div id="board">
+    <!-- Board will be created dynamically using JavaScript -->
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const board = document.getElementById('board');
+      const pieces = ['♖', '♘', '♗', '♕', '♔', '♗', '♘', '♖'];
+      const pawns = '♙'.repeat(8);
+
+      // Create the chessboard
+      for (let row = 0; row < 8; row++) {
+        for (let col = 0; col < 8; col++) {
+          const square = document.createElement('div');
+          square.classList.add('square');
+          square.classList.add((row + col) % 2 === 0 ? 'white' : 'black');
+          square.textContent = row === 0 ? pieces[col] : row === 1 ? pawns[col] : '';
+          board.appendChild(square);
+        }
+      }
+    });
+  </script>
+</body>
+</html>
